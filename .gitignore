@@ -6,3 +6,7 @@ Thumbs.db
 dist/neutralino
 dist/*.exe
 
+build
+debug
+release
+

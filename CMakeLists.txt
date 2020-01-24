@@ -10,12 +10,14 @@ find_library(WEBKIT WebKit)
 set(FRAMEWORK_FLAG -DWEBVIEW_COCOA=1)
 set(LINK_OPTS ${WEBKIT})
 
-file(GLOB SOURCES src/*.cc)
+set(SOURCES src/main.cc src/core/Engine.cc)
 add_executable(neutralino ${SOURCES})
+add_subdirectory(thirdparty)
 target_include_directories(neutralino PUBLIC thirdparty)
 
 target_compile_options(neutralino PUBLIC ${FRAMEWORK_FLAG})
 target_link_libraries(neutralino ${LINK_OPTS})
+target_link_libraries(neutralino uv_a)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
     message(STATUS "Configuring Release build")
